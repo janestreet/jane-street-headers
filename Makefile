@@ -1,23 +1,18 @@
-
 NAME := jane-street-headers
-PREFIX ?= $(shell grep ^prefix= setup.data | cut -d\" -f 2)
 
-.PHONY: default
+# Default rule
 default:
+	jbuilder build-package $(NAME)
 
-install: $(NAME).install
+install:
 	opam-installer -i --prefix $(PREFIX) $(NAME).install
 
-uninstall: $(NAME).install
+uninstall:
 	opam-installer -u --prefix $(PREFIX) $(NAME).install
 
-reinstall: $(NAME).install
-	opam-installer -u --prefix $(PREFIX) $(NAME).install &> /dev/null || true
-	opam-installer -i --prefix $(PREFIX) $(NAME).install
+reinstall: uninstall reinstall
 
-bin.lzo: $(NAME).install
-	rm -rf _install
-	mkdir _install
-	opam-installer -i --prefix _install $(NAME).install
-	cd _install && lzop -1 -P -o ../bin.lzo `find . -type f`
-	rm -rf _install
+clean:
+	rm -rf _build
+
+.PHONY: default install uninstall reinstall clean
