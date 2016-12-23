@@ -5,6 +5,5 @@
    (core_params
     jane_common
     ocaml_utils
-    unix_utils
-    internalhash))
+    unix_utils))
   (preprocess  no_preprocessing)))
