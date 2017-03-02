@@ -6,7 +6,6 @@
     jane_common
     ocaml_utils
     unix_utils))
-  (js_of_ocaml ((flags (--no-sourcemap))))
   (preprocess  no_preprocessing)))
 
 (jbuild_version jane_street)
