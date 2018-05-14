@@ -11,7 +11,7 @@ build: [
 depends: [
   "jbuilder" {build & >= "1.0+beta18.1"}
 ]
-available: [ ocaml-version >= "4.06.1" ]
+available: [ ocaml-version >= "4.04.2" ]
 descr: "
 Jane Street C header files
 
