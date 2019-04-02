@@ -52,7 +52,7 @@ extern int caml_rev_convert_signal_number(int signo);
 
 extern void raise_with_two_args(value tag, value arg1, value arg2) Noreturn;
 
-extern value* named_value_exn(const char* n);
+extern const value* named_value_exn(const char* n);
 extern void* malloc_exn(size_t size);
 
 extern const char* string_ocaml_to_c(value s_v);
