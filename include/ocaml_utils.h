@@ -1,6 +1,8 @@
 #ifndef OCAML_UTILS_H
 #define OCAML_UTILS_H
 
+#undef Hide_upstream_size_macros
+
 #include "jane_common.h"
 
 #include <caml/mlvalues.h>
