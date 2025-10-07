@@ -78,4 +78,17 @@ static inline value caml_alloc_some(value v)
 }
 #endif
 
+static inline value /* local_ 'a option */
+caml_alloc_some_local(value /* 'a */ v) {
+  // caml_alloc_local does not currently invoke the GC when stack allocation
+  // is enabled, but just in case it does in the future, or in case this code
+  // gets used when stack allocation is disabled, we register [v] as a root.
+  CAMLparam1(v);
+
+  value ret = caml_alloc_local(1, Tag_some);
+  Field(ret, 0) = v;
+
+  CAMLreturn(ret);
+}
+
 #endif /* OCAML_UTILS_H */
